@@ -44,8 +44,7 @@ to go
 end
 
 to look-around
-  if ( ( count turtles with [ breed = cooperative-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) ) >
-  ( count turtles with [ breed = greedy-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) [
+  if ( ( count turtles with [ breed = cooperative-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) ) >  [
     set breed cooperative-cows
     set color red - 1.5
   ]
@@ -406,6 +405,21 @@ vision-length
 10
 1.0
 1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+706
+139
+878
+172
+density-for-switch
+density-for-switch
+0
+10
+1.0
+.25
 1
 NIL
 HORIZONTAL
