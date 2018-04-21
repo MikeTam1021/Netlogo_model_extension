@@ -24,9 +24,14 @@ to setup-cows
       set breed cooperative-cows
       set color red - 1.5
     ] [
-      set breed greedy-cows
-      set color sky - 2
-    ]
+      ifelse (random-float (1.0 - cooperative-probability) < greedy-probability) [
+        set breed greedy-cows
+        set color sky - 2
+        ] [
+        set breed tft-cows
+        set color yellow + 2
+        ]
+      ]
   ]
 end
 
@@ -77,8 +82,22 @@ to eat  ;; turtle procedure
   ifelse breed = cooperative-cows [
     eat-cooperative
   ] [
-    if breed = greedy-cows
-      [ eat-greedy ]
+    ifelse breed = greedy-cows [
+      eat-greedy
+    ] [
+      if breed = tft-cows [
+        let greedies count greedy-cows-on neighbors
+        let coops count cooperative-cows-on neighbors
+        ifelse greedies > 0 [
+          ifelse greedies / (greedies + coops) > threshold [
+            eat-greedy
+          ] [
+            eat-cooperative
+          ] ] [
+          eat-cooperative
+        ]
+      ]
+    ]
   ]
 end
 
@@ -128,10 +147,10 @@ ticks
 30.0
 
 BUTTON
-218
-42
-273
-75
+167
+19
+222
+52
 go
 go
 T
@@ -145,10 +164,10 @@ NIL
 0
 
 BUTTON
-38
-41
-93
-74
+88
+18
+143
+51
 setup
 setup
 NIL
@@ -164,13 +183,13 @@ NIL
 SLIDER
 7
 115
-214
+179
 148
 cooperative-probability
 cooperative-probability
 0
 1.0
-0.5
+0.47
 0.01
 1
 NIL
@@ -282,10 +301,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-216
-115
-332
-148
+217
+185
+333
+218
 metabolism
 metabolism
 0.0
@@ -320,7 +339,7 @@ reproduction-cost
 reproduction-cost
 0.0
 99.0
-54.0
+56.0
 1.0
 1
 NIL
@@ -344,6 +363,7 @@ true
 PENS
 "greedy" 1.0 0 -14985354 true "" "plot count greedy-cows"
 "cooperative" 1.0 0 -6675684 true "" "plot count cooperative-cows"
+"tit-for-tat" 1.0 0 -723837 true "" "plot count tft-cows"
 
 TEXTBOX
 113
@@ -368,7 +388,7 @@ advanced sliders:
 MONITOR
 8
 414
-134
+117
 471
 # greedy cows
 count greedy-cows
@@ -377,12 +397,53 @@ count greedy-cows
 14
 
 MONITOR
-143
-414
-307
-471
-# cooperative cows
+121
+415
+222
+472
+# coop cows
 count cooperative-cows
+1
+1
+14
+
+SLIDER
+180
+116
+332
+149
+greedy-probability
+greedy-probability
+0
+1
+0.39
+.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+219
+150
+332
+183
+threshold
+threshold
+0
+1
+0.5
+.01
+1
+NIL
+HORIZONTAL
+
+MONITOR
+227
+416
+316
+473
+# tft cows
+count tft-cows
 1
 1
 14
