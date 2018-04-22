@@ -54,7 +54,7 @@ end
 to look-around
   ;if ( ( count turtles with [ breed = cooperative-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) ) >
   ;( count turtles with [ breed = greedy-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) [
-  if count cooperative-cows-on neighbors > count greedy-cows-on neighbors * 1.5 [
+  if count cooperative-cows-on neighbors > count greedy-cows-on neighbors * ratio-to-become-cooperative [
     set breed cooperative-cows
     set color red - 1.5
   ]
@@ -415,6 +415,21 @@ starving-threshold
 10
 5.0
 1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+699
+132
+908
+165
+ratio-to-become-cooperative
+ratio-to-become-cooperative
+0
+2
+1.5
+.1
 1
 NIL
 HORIZONTAL
