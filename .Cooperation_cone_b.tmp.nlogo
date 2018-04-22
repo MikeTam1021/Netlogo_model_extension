@@ -33,6 +33,7 @@ to go
   ask turtles [  ;; includes both breeds
     look-around
     move
+    starving?
     eat
     reproduce
   ]
@@ -43,9 +44,17 @@ to go
   tick
 end
 
+to starving?
+    if energy < starving-threshold [
+    set breed greedy-cows
+    set color sky - 2
+  ]
+end
+
 to look-around
-  if ( ( count turtles with [ breed = cooperative-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) ) >
-  ( count turtles with [ breed = greedy-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) [
+  ;if ( ( count turtles with [ breed = cooperative-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) ) >
+  ;( count turtles with [ breed = greedy-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) [
+  if count cooperative-cows-on neighbors > count greedy-cows-on neighbors  [
     set breed cooperative-cows
     set color red - 1.5
   ]
@@ -78,10 +87,6 @@ to move  ;; turtle procedure
   rt random 360
   fd stride-length
   set energy energy - metabolism
-  if energy < starving-threshold [
-    set breed greedy-cows
-    set color sky - 2
-  ]
   if energy < 0 [ die ]
 end
 
@@ -182,7 +187,7 @@ cooperative-probability
 cooperative-probability
 0
 1.0
-0.5
+0.4
 0.01
 1
 NIL
@@ -242,7 +247,7 @@ stride-length
 stride-length
 0.0
 0.3
-0.17
+0.08
 0.01
 1
 NIL
@@ -400,30 +405,15 @@ count cooperative-cows
 14
 
 SLIDER
-702
-83
-874
-116
-vision-length
-vision-length
+706
+79
+878
+112
+starving-threshold
+starving-threshold
 0
 10
-1.0
-1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-704
-134
-876
-167
-starving-threshold
-starving-threshold
-0
-100
-7.0
+10.0
 1
 1
 NIL
