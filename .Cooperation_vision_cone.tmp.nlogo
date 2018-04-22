@@ -44,7 +44,8 @@ to go
 end
 
 to look-around
-  if ( ( count turtles with [ breed = cooperative-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) ) >  [
+  if ( ( count turtles with [ breed = cooperative-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) ) >
+  ( count turtles with [ breed = greedy-cows ] in-cone vision-length 360 ) / ( (vision-length ^ 2 ) * 3.14) [
     set breed cooperative-cows
     set color red - 1.5
   ]
@@ -77,6 +78,10 @@ to move  ;; turtle procedure
   rt random 360
   fd stride-length
   set energy energy - metabolism
+  if energy < starving-threshold [
+    set breed greedy-cows
+    set color sky - 2
+  ]
   if energy < 0 [ die ]
 end
 
@@ -410,16 +415,16 @@ NIL
 HORIZONTAL
 
 SLIDER
-706
-139
-878
-172
-density-for-switch
-density-for-switch
+704
+134
+876
+167
+starving-threshold
+starving-threshold
 0
-10
-1.0
-.25
+100
+7.0
+1
 1
 NIL
 HORIZONTAL

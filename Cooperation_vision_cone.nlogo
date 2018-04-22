@@ -78,6 +78,10 @@ to move  ;; turtle procedure
   rt random 360
   fd stride-length
   set energy energy - metabolism
+  if energy < starving-threshold [
+    set breed greedy-cows
+    set color sky - 2
+  ]
   if energy < 0 [ die ]
 end
 
@@ -405,6 +409,21 @@ vision-length
 0
 10
 1.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+704
+134
+876
+167
+starving-threshold
+starving-threshold
+0
+100
+7.0
 1
 1
 NIL
