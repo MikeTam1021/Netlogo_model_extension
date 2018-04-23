@@ -426,7 +426,7 @@ SLIDER
 165
 ratio-to-become-cooperative
 ratio-to-become-cooperative
-0
+1
 2
 1.4
 .1
