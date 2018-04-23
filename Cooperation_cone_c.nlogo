@@ -45,7 +45,7 @@ to go
 end
 
 to starving?
-    if energy < starving-threshold a[
+    if energy < starving-threshold and color != sky - 2[
     set breed greedy-cows
     set color sky
   ]
@@ -413,7 +413,7 @@ starving-threshold
 starving-threshold
 0
 10
-5.0
+4.0
 1
 1
 NIL
@@ -428,7 +428,7 @@ ratio-to-become-cooperative
 ratio-to-become-cooperative
 0
 2
-1.5
+1.4
 .1
 1
 NIL
