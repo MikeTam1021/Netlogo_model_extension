@@ -516,6 +516,14 @@ flip-strat?
 -1000
 
 @#$#@#$#@
+## EXTENSION JUSTIFICATION
+
+The model extension of tit-for-tat is a common paradigm in the enacting game theorectical strategies. Tit-for-tat strategies should be more conducive for a balance between coorporative and greedy strategies. This may or may not be the case due to the nature of locational interaction within the model.
+
+The cooperation model usually ends with an overwhelming victory for one strategy. If the environment is restrictive, greedy cows tend to fail much more easily. In an environment filled with resources, greedy cows kill off the cooperative cows. With the right mix of factors, tit-for-tat cows should create a restricting force on greedy cows and offer cooperative cows the opportunity to feed and reproduce. The random motion of cows across the world can influence this pattern even under ideal conditions.
+
+An additional extension allowing for the full flipping of strategies from greedy and cooperative cows has been implemented. This model further allows the balance between greedy and cooperative cows to be attained.
+
 ## WHAT IS IT?
 
 This model (and Altruism and Divide the Cake) are part of the EACH unit ("Evolution of Altruistic and Cooperative Habits: Learning About Complexity in Evolution").  See http://ccl.northwestern.edu/rp/each/index.shtml for more information on the EACH unit. The EACH unit is embedded within the BEAGLE (Biological Experiments in Adaptation, Genetics, Learning and Evolution) evolution curriculum. See http://ccl.northwestern.edu/rp/beagle/index.shtml.
