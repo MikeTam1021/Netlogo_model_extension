@@ -453,7 +453,7 @@ PENS
 "default" 1.0 0 -8053223 true "" "plot count turtles with [color = red - 1.5]"
 "pen-1" 1.0 0 -2674135 true "" "plot count turtles with [color = red]"
 "pen-2" 1.0 0 -13791810 true "" "plot count turtles with [color = sky]"
-"pen-3" 1.0 0 -14985354 true "" "plot count turtles with [color = sky - 2 ]"
+"pen-3" 1.0 0 -14985354 true "" "plot count turtles with [color = sky - 1.5 ]"
 
 @#$#@#$#@
 ## WHAT IS IT?
